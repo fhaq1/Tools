@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate QR codes and barcodes easily with customization options like colors and optimization. Fully responsive and SEO optimized with ad space.">
+    <meta name="keywords" content="QR Code Generator, Barcode Generator, Responsive, Customizable, Ads">
+    <meta name="author" content="Your Name">
+    <title>QR & Barcode Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.3.2/tailwind.min.css">
+    <style>
+        body {
+            background: #f9fafb;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode/dist/JsBarcode.all.min.js"></script>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+    <header class="w-full bg-blue-600 text-white p-4">
+        <h1 class="text-xl font-bold text-center">QR & Barcode Generator Tool</h1>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Generator Options -->
+            <section class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-lg font-semibold mb-4">Customize Your Code</h2>
+                <label for="content" class="block text-sm font-medium mb-2">Content</label>
+                <input id="content" type="text" placeholder="Enter text or URL" class="w-full mb-4 p-2 border rounded">
+
+                <label for="fgColor" class="block text-sm font-medium mb-2">Foreground Color</label>
+                <input id="fgColor" type="color" value="#000000" class="w-full mb-4">
+
+                <label for="bgColor" class="block text-sm font-medium mb-2">Background Color</label>
+                <input id="bgColor" type="color" value="#ffffff" class="w-full mb-4">
+
+                <button id="generateQR" class="w-full bg-blue-600 text-white py-2 rounded mb-4">Generate QR Code</button>
+                <button id="generateBarcode" class="w-full bg-green-600 text-white py-2 rounded">Generate Barcode</button>
+            </section>
+
+            <!-- QR Code Result -->
+            <section class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center">
+                <h2 class="text-lg font-semibold mb-4">QR Code</h2>
+                <canvas id="qrCodeCanvas" class="mb-4"></canvas>
+                <button id="downloadQR" class="bg-blue-500 text-white py-2 px-4 rounded hidden">Download QR Code</button>
+            </section>
+
+            <!-- Barcode Result -->
+            <section class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center">
+                <h2 class="text-lg font-semibold mb-4">Barcode</h2>
+                <svg id="barcodeCanvas" class="mb-4"></svg>
+                <button id="downloadBarcode" class="bg-green-500 text-white py-2 px-4 rounded hidden">Download Barcode</button>
+            </section>
+        </div>
+
+        <!-- Advertisement Space -->
+        <div class="mt-8">
+            <h2 class="text-center text-lg font-semibold mb-4">Advertisement</h2>
+            <div id="ad-container" class="flex justify-center">
+                <!-- Insert Google AdSense code here -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full bg-gray-800 text-white text-center p-4">
+        <p>&copy; 2025 QR & Barcode Generator Tool. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('generateQR').addEventListener('click', () => {
+            const content = document.getElementById('content').value;
+            const fgColor = document.getElementById('fgColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+            const canvas = document.getElementById('qrCodeCanvas');
+
+            if (content) {
+                QRCode.toCanvas(canvas, content, {
+                    color: {
+                        dark: fgColor,
+                        light: bgColor
+                    }
+                }, (error) => {
+                    if (error) console.error(error);
+                    document.getElementById('downloadQR').classList.remove('hidden');
+                });
+            } else {
+                alert('Please enter content to generate QR Code.');
+            }
+        });
+
+        document.getElementById('generateBarcode').addEventListener('click', () => {
+            const content = document.getElementById('content').value;
+            const svg = document.getElementById('barcodeCanvas');
+
+            if (content) {
+                JsBarcode(svg, content, {
+                    format: "CODE128",
+                    lineColor: "#000",
+                    width: 2,
+                    height: 40,
+                    displayValue: true
+                });
+                document.getElementById('downloadBarcode').classList.remove('hidden');
+            } else {
+                alert('Please enter content to generate Barcode.');
+            }
+        });
+
+        document.getElementById('downloadQR').addEventListener('click', () => {
+            const canvas = document.getElementById('qrCodeCanvas');
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+
+        document.getElementById('downloadBarcode').addEventListener('click', () => {
+            const svg = document.getElementById('barcodeCanvas');
+            const serializer = new XMLSerializer();
+            const svgBlob = new Blob([serializer.serializeToString(svg)], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(svgBlob);
+            const link = document.createElement('a');
+            link.download = 'barcode.svg';
+            link.href = url;
+            link.click();
+        });
+    </script>
+</body>
+</html>
