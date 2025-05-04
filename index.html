@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore a wide variety of tools for images, PDFs, and more. Easy-to-use, modern, and responsive tools all in one place.">
+    <meta name="keywords" content="Image Tools, PDF Tools, Responsive, Modern UI, Online Tools">
+    <meta name="author" content="Your Name">
+    <title>All-in-One Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.3.2/tailwind.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9fafb;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="w-full bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">ToolHub</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#features" class="hover:underline">Features</a></li>
+                    <li><a href="#tools" class="hover:underline">Tools</a></li>
+                    <li><a href="#contact" class="hover:underline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="bg-gray-100 text-center py-16">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-4">Welcome to ToolHub</h2>
+                <p class="text-lg mb-6">Your one-stop solution for all image and PDF editing tools. Fast, reliable, and modern.</p>
+                <a href="#tools" class="bg-blue-600 text-white py-2 px-4 rounded-lg">Explore Tools</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-4">User-Friendly</h3>
+                        <p>Intuitive design for hassle-free usage.</p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-4">Fast Processing</h3>
+                        <p>Quick and efficient tools for all your needs.</p>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-4">Secure</h3>
+                        <p>We prioritize your data privacy and security.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools" class="bg-gray-100 py-16">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">Our Tools</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-4">QR Code Generator</h3>
+                        <p>Create QR codes with ease.</p>
+                        <a href="qr_code_generator.html" class="text-blue-600 hover:underline">Try Now</a>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-4">PDF Splitter</h3>
+                        <p>Split PDF files quickly.</p>
+                        <a href="pdf_splitter.html" class="text-blue-600 hover:underline">Try Now</a>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-4">Image Compressor</h3>
+                        <p>Optimize images for web.</p>
+                        <a href="image_compressor.html" class="text-blue-600 hover:underline">Try Now</a>
+                    </div>
+                    <!-- Add more tools as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Advertisement Section -->
+        <section class="py-16">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-8">Advertisement</h2>
+                <div id="ad-container" class="flex justify-center">
+                    <!-- Insert Google AdSense code here -->
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="1234567890"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-gray-100 py-16">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+                <form class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                    <input id="name" type="text" placeholder="Your Name" class="w-full mb-4 p-2 border rounded">
+
+                    <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                    <input id="email" type="email" placeholder="Your Email" class="w-full mb-4 p-2 border rounded">
+
+                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" placeholder="Your Message" class="w-full mb-4 p-2 border rounded"></textarea>
+
+                    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full bg-gray-800 text-white text-center p-4">
+        <p>&copy; 2025 ToolHub. All rights reserved.</p>
+    </footer>
+</body>
+</html>
